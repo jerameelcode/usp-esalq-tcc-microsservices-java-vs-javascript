@@ -74,13 +74,11 @@ npm run start:dev
 
 ### 2. Executando o Spring Boot Microservice
 ```bash
-Copiar código
 cd springboot-microservice
 ./mvnw spring-boot:run
 ```
 ### 3. Executando com Docker Compose
 ```bash
-Copiar código
 docker-compose up --build
 ```
 

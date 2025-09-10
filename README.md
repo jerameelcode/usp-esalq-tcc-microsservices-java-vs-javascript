@@ -27,21 +27,25 @@ Neste estudo foram implementados **dois microserviços equivalentes** para geren
 
 ## 📂 Estrutura do Repositório
 
-├── nestjs-microservice/ # Implementação em NestJS
-│ ├── src/ # Código-fonte (controllers, services, modules)
-│ ├── test/ # Testes automatizados (Jest)
-│ ├── ormconfig.json # Configuração TypeORM
-│ └── Dockerfile # Containerização
+## 📂 Estrutura do Repositório
+
+```
+├── nestjs-microservice/        # Implementação em NestJS
+│   ├── src/                    # Código-fonte (controllers, services, modules)
+│   ├── test/                   # Testes automatizados (Jest)
+│   ├── ormconfig.json          # Configuração TypeORM
+│   └── Dockerfile              # Containerização
 │
-├── springboot-microservice/ # Implementação em Spring Boot
-│ ├── src/main/java/... # Código-fonte (controllers, services, repos)
-│ ├── src/test/java/... # Testes automatizados (JUnit)
-│ ├── application.properties # Configuração da aplicação
-│ └── Dockerfile # Containerização
+├── springboot-microservice/    # Implementação em Spring Boot
+│   ├── src/main/java/...       # Código-fonte (controllers, services, repos)
+│   ├── src/test/java/...       # Testes automatizados (JUnit)
+│   ├── application.properties  # Configuração da aplicação
+│   └── Dockerfile              # Containerização
 │
-└── tests/ # Scripts de testes de desempenho
-├── k6-scripts/ # Simulações de carga com k6
-└── apache-bench/ # Exemplos de uso do Apache Benchmark
+└── tests/                      # Scripts de testes de desempenho
+    ├── k6-scripts/             # Simulações de carga com k6
+    └── apache-bench/           # Exemplos de uso do Apache Benchmark
+```
 
 
 ---

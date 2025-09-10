@@ -27,8 +27,6 @@ Neste estudo foram implementados **dois microserviços equivalentes** para geren
 
 ## 📂 Estrutura do Repositório
 
-## 📂 Estrutura do Repositório
-
 ```
 ├── nestjs-microservice/        # Implementação em NestJS
 │   ├── src/                    # Código-fonte (controllers, services, modules)
@@ -46,7 +44,6 @@ Neste estudo foram implementados **dois microserviços equivalentes** para geren
     ├── k6-scripts/             # Simulações de carga com k6
     └── apache-bench/           # Exemplos de uso do Apache Benchmark
 ```
-
 
 ---
 
@@ -81,59 +78,80 @@ npm run start:dev
 cd springboot-microservice
 ./mvnw spring-boot:run
 ```
+
 ### 3. Executando com Docker Compose
 ```bash
 docker-compose up --build
 ```
 
+---
+
 ## 🔐 Autenticação
-Ambos os serviços utilizam JWT para autenticação.
 
-Enviar credenciais de login:
-```bash
-POST /auth/login
-```
-Retorno: token JWT.
+Ambos os serviços utilizam **JWT** para autenticação.  
 
-Usar o token nas rotas protegidas:
+1. Enviar credenciais de login:  
+   ```
+   POST /auth/login
+   ```
+   Retorno: token JWT.  
 
-```makefile
-Authorization: Bearer <token>
-```
+2. Usar o token nas rotas protegidas:  
+   ```
+   Authorization: Bearer <token>
+   ```
+
+---
 
 ## 📊 Testes de Desempenho
-Apache Benchmark
 
+### Apache Benchmark
 Exemplo de teste com 1000 requisições e 50 usuários simultâneos:
-
 ```bash
 ab -n 1000 -c 50 http://localhost:3000/users
-````
+```
 
-k6
-
+### k6
 Exemplo de execução de script de carga:
-
 ```bash
 k6 run tests/k6-scripts/load-test.js
 ```
 
-## Resultados esperados:
+Resultados esperados:
+- **Tempo de resposta médio** (latência).  
+- **Throughput** (requisições por segundo).  
+- **Consumo de recursos** (CPU, memória).  
 
-Tempo de resposta médio (latência).
-
-Throughput (requisições por segundo).
-
-Consumo de recursos (CPU, memória).
-
-
+---
 
 ## 📸 Exemplos de Execução
 
-Inicialização do NestJS e Spring Boot.
+- Inicialização do NestJS e Spring Boot.  
+- Geração e uso de token JWT.  
+- Resultados de testes de carga (`ab` e `k6`).  
 
-Geração e uso de token JWT.
+As capturas de tela estão disponíveis na pasta [`/docs`](./docs).
 
-Resultados de testes de carga (ab e k6).
+---
 
-As capturas de tela estão disponíveis na pasta /docs.
+## ✅ Resultados Preliminares
+
+- **NestJS**: menor consumo de memória, curva de aprendizado mais rápida, ideal para equipes com background em JavaScript/TypeScript.  
+- **Spring Boot**: robustez e maturidade, melhor suporte em ambientes corporativos e integração com sistemas legados.  
+- **Ambos**: oferecem suporte nativo a segurança (JWT, proteção de rotas, sanitização de entrada) e escalabilidade via containerização.  
+
+---
+
+## 📌 Próximos Passos
+
+- Expandir para múltiplos domínios (ex: produtos, pedidos).  
+- Orquestrar os serviços em **Kubernetes**.  
+- Monitoramento com **Prometheus + Grafana**.  
+- Logs centralizados com **ELK Stack**.  
+
+---
+
+## 👤 Autor
+
+- **Jerameel João Gonga**  
+MBA em Engenharia de Software - USP/Esalq  

@@ -108,7 +108,7 @@ Ambos os serviços utilizam **JWT** para autenticação.
 ### Apache Benchmark
 Exemplo de teste com 1000 requisições e 50 usuários simultâneos:
 ```bash
-ab -n 1000 -c 50 http://localhost:3000/users
+ab -n 1000 -c 50 http://localhost:8080/users
 ```
 
 ### k6

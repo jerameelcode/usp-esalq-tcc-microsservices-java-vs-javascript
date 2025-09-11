@@ -68,14 +68,14 @@ Neste estudo foram implementados **dois microserviços equivalentes** para geren
 
 ### 1. Executando o NestJS Microservice
 ```bash
-cd nestjs-microservice
+cd javascript/microservice/
 npm install
 npm run start:dev
 ```
 
 ### 2. Executando o Spring Boot Microservice
 ```bash
-cd springboot-microservice
+cd java/microservice/
 ./mvnw spring-boot:run
 ```
 

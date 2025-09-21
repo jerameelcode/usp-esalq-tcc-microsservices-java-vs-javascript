@@ -33,8 +33,8 @@ build/
 .vscode/
 
 # Ignorar arquivos específicos
-java/springboot-microsservice/src/.DS_Store
-java/springboot-microsservice/mvnw.cmd
-java/springboot-microsservice/mvnw
-java/springboot-microsservice/.mvn/wrapper/maven-wrapper.properties
+.DS_Store
+mvnw.*
+mvnw
+.mvn/
 java/springboot-microsservice/.DS_Store

@@ -1,0 +1,21 @@
+spring:
+    application:
+        name: microsservice
+
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        username: ${PG_USER}
+        url: ${PG_URL}
+        password: ${PG_PASSWORD}
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        show-sql: true
+server:
+    port: ${SERVER_PORT}
+    servlet:
+        context-path: ${SERVER_CONTEXT_PATH}
+

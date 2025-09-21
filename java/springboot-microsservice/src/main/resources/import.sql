@@ -1,0 +1,4 @@
+INSERT INTO tb_user (id, name, email, password) VALUES ('5e009a2e-70cf-4282-808e-c29df379d7a0','Jerameel Gonga', 'jerameel.gonga@mail.com','5e009a2e-70cf-4282-808e-c29df379d7a0');
+INSERT INTO tb_user (id, name, email, password) VALUES ('277635c3-dc49-49ed-9959-b3de9103bf51','John Doe', 'john.doe@mail.com','5e009a2e-70cf-4282-808e-c29df379d7a0');
+INSERT INTO tb_user (id, name, email, password) VALUES ('85ef13c4-8eb7-4fe8-b6e1-2f9e24487833','Jane Smith', 'jane.smith@mail.com','5e009a2e-70cf-4282-808e-c29df379d7a0');
+INSERT INTO tb_user (id, name, email, password) VALUES ('c4b2dc68-f51e-4d0e-8373-c0d2189d0f36','Alice Johnson', 'alice.johnson@mail.com','5e009a2e-70cf-4282-808e-c29df379d7a0');

@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.gonga.tcc.microsservice.domain.User;
@@ -23,16 +24,18 @@ import com.gonga.tcc.microsservice.repository.UserRepository;
 public class UserService {
 
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
-    @Value("${user.not.found}")
+    @Value("${message.user-not-found}")
     private String userNotFound;
 
     private static final String LOG_MSG_FORMAT = "{}: {}";
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
     private static final UserMapper userMapper = UserMapper.INSTANCE;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public Page<UserResponseDTO> findAll(Pageable pageable) {
@@ -57,6 +60,7 @@ public class UserService {
             throw new IllegalArgumentException("Email already exists");
         }
         var userEntity = userMapper.toEntity(userRequestDTO);
+        userEntity.setPassword(passwordEncoder.encode(userRequestDTO.getPassword()));
         var savedUser = userRepository.save(userEntity);
         logger.info("User created successfully with ID: {}", savedUser.getId());
         return userMapper.toDTO(savedUser);
@@ -70,10 +74,17 @@ public class UserService {
                     return new ResourceNotFoundException(userNotFound+": " + id);
                 });
 
-        User userToCreate = userMapper.toEntity(userRequestDTO);
-        userToCreate.setId(user.getId());
+        User userToUpdate = userMapper.toEntity(userRequestDTO);
+        userToUpdate.setId(user.getId());
+        userToUpdate.setCreatedAt(user.getCreatedAt());
+        
+        if (userRequestDTO.getPassword() != null && !userRequestDTO.getPassword().isBlank()) {
+            userToUpdate.setPassword(passwordEncoder.encode(userRequestDTO.getPassword()));
+        } else {
+            userToUpdate.setPassword(user.getPassword());
+        }
 
-        User updatedUser = userRepository.save(userToCreate);
+        User updatedUser = userRepository.save(userToUpdate);
         logger.info("User updated successfully with ID: {}", updatedUser.getId());
         return userMapper.toDTO(updatedUser);
     }

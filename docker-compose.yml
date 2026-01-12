@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: tcc-postgres
+    environment:
+      POSTGRES_USER: ${PG_USER:-postgres}
+      POSTGRES_PASSWORD: ${PG_PASSWORD:-postgres}
+      POSTGRES_DB: ${PG_DATABASE:-usp-tcc-microsservices}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${PG_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - tcc-network
+
+  # Spring Boot Microservice (Java)
+  springboot-api:
+    build:
+      context: ./java/springboot-microsservice
+      dockerfile: Dockerfile
+    container_name: tcc-springboot
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${PG_DATABASE:-usp-tcc-microsservices}
+      SPRING_DATASOURCE_USERNAME: ${PG_USER:-postgres}
+      SPRING_DATASOURCE_PASSWORD: ${PG_PASSWORD:-postgres}
+      JWT_SECRET: ${JWT_SECRET:-tcc-microsservices-jwt-secret-2026}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - tcc-network
+
+  # NestJS Microservice (JavaScript/TypeScript)
+  nestjs-api:
+    build:
+      context: ./javascript
+      dockerfile: Dockerfile
+    container_name: tcc-nestjs
+    environment:
+      PG_HOST: postgres
+      PG_PORT: 5432
+      PG_USER: ${PG_USER:-postgres}
+      PG_PASSWORD: ${PG_PASSWORD:-postgres}
+      PG_DATABASE: ${PG_DATABASE:-usp-tcc-microsservices}
+      JWT_SECRET: ${JWT_SECRET:-tcc-microsservices-jwt-secret-2026}
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    networks:
+      - tcc-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  tcc-network:
+    driver: bridge

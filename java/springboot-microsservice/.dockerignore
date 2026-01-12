@@ -1,0 +1,25 @@
+# Build outputs
+target/
+!target/*.jar
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+*.swp
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+README.md
+*.md
+
+# Test files
+src/test/
+
+# Maven wrapper (using container's Maven)
+.mvn/
+mvnw
+mvnw.cmd

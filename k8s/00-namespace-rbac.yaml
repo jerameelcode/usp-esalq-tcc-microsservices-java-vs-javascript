@@ -1,0 +1,57 @@
+---
+# Namespace for the TCC Microservices project
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tcc-microsservices
+  labels:
+    name: tcc-microsservices
+    project: tcc
+    environment: production
+
+---
+# Service Account for deployments
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tcc-deployment-sa
+  namespace: tcc-microsservices
+  labels:
+    app: tcc-microservices
+    component: service-account
+
+---
+# ClusterRole for pod management
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: tcc-pod-reader
+  labels:
+    app: tcc-microservices
+rules:
+- apiGroups: [""]
+  resources: ["pods", "pods/log"]
+  verbs: ["get", "list"]
+- apiGroups: [""]
+  resources: ["services"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["apps"]
+  resources: ["deployments", "statefulsets"]
+  verbs: ["get", "list", "watch"]
+
+---
+# ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: tcc-pod-reader-binding
+  labels:
+    app: tcc-microservices
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: tcc-pod-reader
+subjects:
+- kind: ServiceAccount
+  name: tcc-deployment-sa
+  namespace: tcc-microsservices

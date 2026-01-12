@@ -46,7 +46,7 @@ run_test() {
     local output_json="$OUTPUT_DIR/${framework}_${SCENARIO}_${TIMESTAMP}.json"
     local output_summary="$OUTPUT_DIR/${framework}_${SCENARIO}_${TIMESTAMP}_summary.txt"
     
-    # Run k6 test
+    # Run k6 test (with Docker volume mount support)
     k6 run \
         --env SCENARIO="$SCENARIO" \
         --env SPRINGBOOT_URL="$SPRINGBOOT_URL" \
@@ -54,6 +54,15 @@ run_test() {
         --out json="$output_json" \
         --summary-trend-stats="avg,min,med,max,p(90),p(95),p(99)" \
         "$test_file" 2>&1 | tee "$output_summary"
+    
+    # Alternative: If running from Docker, use absolute path
+    # docker run -v $(pwd):/scripts grafana/k6 run \
+    #     --env SCENARIO="$SCENARIO" \
+    #     --env SPRINGBOOT_URL="$SPRINGBOOT_URL" \
+    #     --env NESTJS_URL="$NESTJS_URL" \
+    #     --out json="$output_json" \
+    #     --summary-trend-stats="avg,min,med,max,p(90),p(95),p(99)" \
+    #     "/scripts/$test_file"
     
     echo -e "${GREEN}✓ $framework benchmark completed${NC}"
     echo -e "  Results: $output_json"

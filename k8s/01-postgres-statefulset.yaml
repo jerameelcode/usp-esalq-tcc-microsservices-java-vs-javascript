@@ -1,0 +1,197 @@
+---
+# PostgreSQL PersistentVolumeClaim for data persistence
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+  namespace: tcc-microsservices
+  labels:
+    app: postgres
+    component: database
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+# ConfigMap for PostgreSQL configuration
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  namespace: tcc-microsservices
+  labels:
+    app: postgres
+    component: config
+data:
+  POSTGRES_DB: usp-tcc-microsservices
+  POSTGRES_USER: postgres
+  POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+  postgresql.conf: |
+    # Performance tuning for load testing
+    shared_buffers = 256MB
+    effective_cache_size = 1GB
+    max_connections = 100
+    max_wal_senders = 10
+    wal_level = replica
+    # Logging
+    log_statement = 'all'
+    log_duration = on
+    log_min_duration_statement = 1000
+
+---
+# Secret for PostgreSQL password (base64 encoded in production)
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres-secret
+  namespace: tcc-microsservices
+  labels:
+    app: postgres
+    component: secret
+type: Opaque
+stringData:
+  POSTGRES_PASSWORD: postgres
+  DATABASE_URL: postgresql://postgres:postgres@postgres:5432/usp-tcc-microsservices
+
+---
+# StatefulSet for PostgreSQL database
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+  namespace: tcc-microsservices
+  labels:
+    app: postgres
+    component: database
+    tier: backend
+spec:
+  serviceName: postgres
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+        component: database
+        tier: backend
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9187"
+    spec:
+      serviceAccountName: tcc-deployment-sa
+      securityContext:
+        fsGroup: 999
+        runAsNonRoot: true
+        runAsUser: 999
+      containers:
+      - name: postgres
+        image: postgres:16-alpine
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5432
+          name: postgres
+          protocol: TCP
+        envFrom:
+        - configMapRef:
+            name: postgres-config
+        - secretRef:
+            name: postgres-secret
+        env:
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+        volumeMounts:
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql/data
+        - name: postgres-config-vol
+          mountPath: /etc/postgresql
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - pg_isready -U postgres
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - pg_isready -U postgres
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 2
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: false
+          capabilities:
+            drop:
+            - ALL
+            add:
+            - CHOWN
+            - DAC_OVERRIDE
+      volumes:
+      - name: postgres-config-vol
+        configMap:
+          name: postgres-config
+      restartPolicy: Always
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - postgres
+              topologyKey: kubernetes.io/hostname
+  volumeClaimTemplates:
+  - metadata:
+      name: postgres-storage
+      labels:
+        app: postgres
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 10Gi
+
+---
+# Service for PostgreSQL (ClusterIP - internal only)
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  namespace: tcc-microsservices
+  labels:
+    app: postgres
+    component: database
+spec:
+  type: ClusterIP
+  clusterIP: None  # Headless service for StatefulSet
+  selector:
+    app: postgres
+  ports:
+  - protocol: TCP
+    port: 5432
+    targetPort: 5432
+    name: postgres

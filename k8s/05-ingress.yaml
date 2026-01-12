@@ -1,0 +1,141 @@
+---
+# IngressClass for nginx (if not already present in cluster)
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: nginx
+  labels:
+    component: ingress
+spec:
+  controller: k8s.io/ingress-nginx
+
+---
+# Ingress for TCC Microservices
+# Routes both Spring Boot and NestJS APIs with path-based routing
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tcc-api-ingress
+  namespace: tcc-microsservices
+  labels:
+    app: tcc-microservices
+    component: ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rate-limit: "100"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1m"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "30"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-protocols: "TLSv1.2 TLSv1.3"
+    nginx.ingress.kubernetes.io/ssl-ciphers: "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - api.tcc.local
+    - springboot.tcc.local
+    - nestjs.tcc.local
+    secretName: tcc-api-tls
+  rules:
+  # Spring Boot API routes
+  - host: springboot.tcc.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: springboot-api
+            port:
+              number: 8080
+  - host: api.tcc.local
+    http:
+      paths:
+      - path: /springboot
+        pathType: Prefix
+        backend:
+          service:
+            name: springboot-api
+            port:
+              number: 8080
+      - path: /api/v1
+        pathType: Prefix
+        backend:
+          service:
+            name: springboot-api
+            port:
+              number: 8080
+  # NestJS API routes
+  - host: nestjs.tcc.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nestjs-api
+            port:
+              number: 3000
+  - host: api.tcc.local
+    http:
+      paths:
+      - path: /nestjs
+        pathType: Prefix
+        backend:
+          service:
+            name: nestjs-api
+            port:
+              number: 3000
+
+---
+# Alternative: Ingress with ClusterIP services for local development
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tcc-api-ingress-local
+  namespace: tcc-microsservices
+  labels:
+    app: tcc-microservices
+    component: ingress
+    environment: local
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  # Local development routing
+  - host: localhost
+    http:
+      paths:
+      - path: /api/springboot
+        pathType: Prefix
+        backend:
+          service:
+            name: springboot-api
+            port:
+              number: 8080
+      - path: /api/nestjs
+        pathType: Prefix
+        backend:
+          service:
+            name: nestjs-api
+            port:
+              number: 3000
+      - path: /health
+        pathType: Prefix
+        backend:
+          service:
+            name: nestjs-api
+            port:
+              number: 3000

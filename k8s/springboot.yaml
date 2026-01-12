@@ -1,0 +1,86 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: springboot-config
+data:
+  SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/usp-tcc-microsservices
+  SPRING_DATASOURCE_USERNAME: postgres
+  SPRING_DATASOURCE_PASSWORD: postgres
+  JWT_SECRET: tcc-microsservices-jwt-secret-2026
+  SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot-api
+  template:
+    metadata:
+      labels:
+        app: springboot-api
+    spec:
+      containers:
+      - name: springboot-api
+        image: maven:3.9-eclipse-temurin-17
+        imagePullPolicy: Never
+        workingDir: /app
+        command:
+        - sh
+        - -c
+        - |
+          mvn clean package -DskipTests -B &&
+          java -jar target/*.jar
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: springboot-config
+        volumeMounts:
+        - name: source
+          mountPath: /app
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 90
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 5
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+      volumes:
+      - name: source
+        hostPath:
+          path: /Users/jerameelgonga/Desktop/projects/study/usp/tcc/usp-esalq-tcc-microsservices-java-vs-javascript/java/springboot-microsservice
+          type: Directory
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-api
+spec:
+  selector:
+    app: springboot-api
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 30080
+  type: NodePort

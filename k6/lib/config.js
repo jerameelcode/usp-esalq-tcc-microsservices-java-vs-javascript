@@ -4,7 +4,7 @@
 export const CONFIG = {
   // API Base URLs
   springboot: {
-    baseUrl: __ENV.SPRINGBOOT_URL || 'http://localhost:8081',
+    baseUrl: __ENV.SPRINGBOOT_URL || 'http://localhost:8080',
     name: 'Spring Boot (Java)',
   },
   nestjs: {

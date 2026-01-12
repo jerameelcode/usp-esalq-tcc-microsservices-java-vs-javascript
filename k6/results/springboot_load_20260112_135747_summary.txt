@@ -1,0 +1,725 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+     execution: local
+        script: ./tests/springboot-api.js
+        output: json (./results/springboot_load_20260112_135747.json)
+
+     scenarios: (100.00%) 1 scenario, 50 max VUs, 3m40s max duration (incl. graceful stop):
+              * springboot_test: Up to 50 looping VUs for 3m30s over 5 stages (gracefulRampDown: 10s, gracefulStop: 30s)
+
+time="2026-01-12T13:57:47Z" level=info msg="Testing Spring Boot API at http://localhost:8080" source=console
+time="2026-01-12T13:57:47Z" level=info msg="Spring Boot API is healthy, starting load test..." source=console
+
+running (0m01.0s), 00/50 VUs, 0 complete and 0 interrupted iterations
+springboot_test   [   0% ] 00/50 VUs  0m00.6s/3m30.0s
+
+running (0m02.0s), 00/50 VUs, 0 complete and 0 interrupted iterations
+springboot_test   [   1% ] 00/50 VUs  0m01.6s/3m30.0s
+
+running (0m03.0s), 00/50 VUs, 0 complete and 0 interrupted iterations
+springboot_test   [   1% ] 00/50 VUs  0m02.6s/3m30.0s
+
+running (0m04.0s), 01/50 VUs, 0 complete and 0 interrupted iterations
+springboot_test   [   2% ] 01/50 VUs  0m03.6s/3m30.0s
+
+running (0m05.0s), 01/50 VUs, 0 complete and 0 interrupted iterations
+springboot_test   [   2% ] 01/50 VUs  0m04.6s/3m30.0s
+
+running (0m06.0s), 01/50 VUs, 0 complete and 0 interrupted iterations
+springboot_test   [   3% ] 01/50 VUs  0m05.6s/3m30.0s
+
+running (0m07.0s), 02/50 VUs, 0 complete and 0 interrupted iterations
+springboot_test   [   3% ] 02/50 VUs  0m06.6s/3m30.0s
+
+running (0m08.0s), 02/50 VUs, 1 complete and 0 interrupted iterations
+springboot_test   [   4% ] 02/50 VUs  0m07.6s/3m30.0s
+
+running (0m09.0s), 02/50 VUs, 1 complete and 0 interrupted iterations
+springboot_test   [   4% ] 02/50 VUs  0m08.6s/3m30.0s
+
+running (0m10.0s), 03/50 VUs, 1 complete and 0 interrupted iterations
+springboot_test   [   5% ] 03/50 VUs  0m09.6s/3m30.0s
+
+running (0m11.0s), 03/50 VUs, 1 complete and 0 interrupted iterations
+springboot_test   [   5% ] 03/50 VUs  0m10.6s/3m30.0s
+
+running (0m12.0s), 03/50 VUs, 2 complete and 0 interrupted iterations
+springboot_test   [   6% ] 03/50 VUs  0m11.6s/3m30.0s
+
+running (0m13.0s), 04/50 VUs, 3 complete and 0 interrupted iterations
+springboot_test   [   6% ] 04/50 VUs  0m12.6s/3m30.0s
+
+running (0m14.0s), 04/50 VUs, 3 complete and 0 interrupted iterations
+springboot_test   [   6% ] 04/50 VUs  0m13.6s/3m30.0s
+
+running (0m15.0s), 04/50 VUs, 4 complete and 0 interrupted iterations
+springboot_test   [   7% ] 04/50 VUs  0m14.6s/3m30.0s
+
+running (0m16.0s), 05/50 VUs, 4 complete and 0 interrupted iterations
+springboot_test   [   7% ] 05/50 VUs  0m15.6s/3m30.0s
+
+running (0m17.0s), 05/50 VUs, 6 complete and 0 interrupted iterations
+springboot_test   [   8% ] 05/50 VUs  0m16.6s/3m30.0s
+
+running (0m18.0s), 05/50 VUs, 8 complete and 0 interrupted iterations
+springboot_test   [   8% ] 05/50 VUs  0m17.6s/3m30.0s
+
+running (0m19.0s), 06/50 VUs, 8 complete and 0 interrupted iterations
+springboot_test   [   9% ] 06/50 VUs  0m18.6s/3m30.0s
+
+running (0m20.0s), 06/50 VUs, 9 complete and 0 interrupted iterations
+springboot_test   [   9% ] 06/50 VUs  0m19.6s/3m30.0s
+
+running (0m21.0s), 06/50 VUs, 10 complete and 0 interrupted iterations
+springboot_test   [  10% ] 06/50 VUs  0m20.6s/3m30.0s
+
+running (0m22.0s), 07/50 VUs, 11 complete and 0 interrupted iterations
+springboot_test   [  10% ] 07/50 VUs  0m21.6s/3m30.0s
+
+running (0m23.0s), 07/50 VUs, 14 complete and 0 interrupted iterations
+springboot_test   [  11% ] 07/50 VUs  0m22.6s/3m30.0s
+
+running (0m24.0s), 07/50 VUs, 15 complete and 0 interrupted iterations
+springboot_test   [  11% ] 07/50 VUs  0m23.6s/3m30.0s
+
+running (0m25.0s), 08/50 VUs, 15 complete and 0 interrupted iterations
+springboot_test   [  12% ] 08/50 VUs  0m24.6s/3m30.0s
+
+running (0m26.0s), 08/50 VUs, 17 complete and 0 interrupted iterations
+springboot_test   [  12% ] 08/50 VUs  0m25.6s/3m30.0s
+
+running (0m27.0s), 08/50 VUs, 18 complete and 0 interrupted iterations
+springboot_test   [  13% ] 08/50 VUs  0m26.6s/3m30.0s
+
+running (0m28.0s), 09/50 VUs, 21 complete and 0 interrupted iterations
+springboot_test   [  13% ] 09/50 VUs  0m27.6s/3m30.0s
+
+running (0m29.0s), 09/50 VUs, 22 complete and 0 interrupted iterations
+springboot_test   [  14% ] 09/50 VUs  0m28.6s/3m30.0s
+
+running (0m30.0s), 09/50 VUs, 23 complete and 0 interrupted iterations
+springboot_test   [  14% ] 09/50 VUs  0m29.6s/3m30.0s
+
+running (0m31.0s), 10/50 VUs, 25 complete and 0 interrupted iterations
+springboot_test   [  15% ] 10/50 VUs  0m30.6s/3m30.0s
+
+running (0m32.0s), 10/50 VUs, 27 complete and 0 interrupted iterations
+springboot_test   [  15% ] 10/50 VUs  0m31.6s/3m30.0s
+
+running (0m33.0s), 10/50 VUs, 29 complete and 0 interrupted iterations
+springboot_test   [  16% ] 10/50 VUs  0m32.6s/3m30.0s
+
+running (0m34.0s), 10/50 VUs, 31 complete and 0 interrupted iterations
+springboot_test   [  16% ] 10/50 VUs  0m33.6s/3m30.0s
+
+running (0m35.0s), 10/50 VUs, 33 complete and 0 interrupted iterations
+springboot_test   [  16% ] 10/50 VUs  0m34.6s/3m30.0s
+
+running (0m36.0s), 10/50 VUs, 35 complete and 0 interrupted iterations
+springboot_test   [  17% ] 10/50 VUs  0m35.6s/3m30.0s
+
+running (0m37.0s), 10/50 VUs, 38 complete and 0 interrupted iterations
+springboot_test   [  17% ] 10/50 VUs  0m36.6s/3m30.0s
+
+running (0m38.0s), 10/50 VUs, 40 complete and 0 interrupted iterations
+springboot_test   [  18% ] 10/50 VUs  0m37.6s/3m30.0s
+
+running (0m39.0s), 10/50 VUs, 42 complete and 0 interrupted iterations
+springboot_test   [  18% ] 10/50 VUs  0m38.6s/3m30.0s
+
+running (0m40.0s), 10/50 VUs, 44 complete and 0 interrupted iterations
+springboot_test   [  19% ] 10/50 VUs  0m39.6s/3m30.0s
+
+running (0m41.0s), 10/50 VUs, 47 complete and 0 interrupted iterations
+springboot_test   [  19% ] 10/50 VUs  0m40.6s/3m30.0s
+
+running (0m42.0s), 10/50 VUs, 49 complete and 0 interrupted iterations
+springboot_test   [  20% ] 10/50 VUs  0m41.6s/3m30.0s
+
+running (0m43.0s), 10/50 VUs, 50 complete and 0 interrupted iterations
+springboot_test   [  20% ] 10/50 VUs  0m42.6s/3m30.0s
+
+running (0m44.0s), 10/50 VUs, 53 complete and 0 interrupted iterations
+springboot_test   [  21% ] 10/50 VUs  0m43.6s/3m30.0s
+
+running (0m45.0s), 10/50 VUs, 55 complete and 0 interrupted iterations
+springboot_test   [  21% ] 10/50 VUs  0m44.6s/3m30.0s
+
+running (0m46.0s), 10/50 VUs, 58 complete and 0 interrupted iterations
+springboot_test   [  22% ] 10/50 VUs  0m45.6s/3m30.0s
+
+running (0m47.0s), 10/50 VUs, 59 complete and 0 interrupted iterations
+springboot_test   [  22% ] 10/50 VUs  0m46.6s/3m30.0s
+
+running (0m48.0s), 10/50 VUs, 61 complete and 0 interrupted iterations
+springboot_test   [  23% ] 10/50 VUs  0m47.6s/3m30.0s
+
+running (0m49.0s), 10/50 VUs, 64 complete and 0 interrupted iterations
+springboot_test   [  23% ] 10/50 VUs  0m48.6s/3m30.0s
+
+running (0m50.0s), 10/50 VUs, 67 complete and 0 interrupted iterations
+springboot_test   [  24% ] 10/50 VUs  0m49.6s/3m30.0s
+
+running (0m51.0s), 10/50 VUs, 68 complete and 0 interrupted iterations
+springboot_test   [  24% ] 10/50 VUs  0m50.6s/3m30.0s
+
+running (0m52.0s), 10/50 VUs, 70 complete and 0 interrupted iterations
+springboot_test   [  25% ] 10/50 VUs  0m51.6s/3m30.0s
+
+running (0m53.0s), 10/50 VUs, 73 complete and 0 interrupted iterations
+springboot_test   [  25% ] 10/50 VUs  0m52.6s/3m30.0s
+
+running (0m54.0s), 10/50 VUs, 75 complete and 0 interrupted iterations
+springboot_test   [  26% ] 10/50 VUs  0m53.6s/3m30.0s
+
+running (0m55.0s), 10/50 VUs, 77 complete and 0 interrupted iterations
+springboot_test   [  26% ] 10/50 VUs  0m54.6s/3m30.0s
+
+running (0m56.0s), 10/50 VUs, 78 complete and 0 interrupted iterations
+springboot_test   [  26% ] 10/50 VUs  0m55.6s/3m30.0s
+
+running (0m57.0s), 10/50 VUs, 83 complete and 0 interrupted iterations
+springboot_test   [  27% ] 10/50 VUs  0m56.6s/3m30.0s
+
+running (0m58.0s), 10/50 VUs, 84 complete and 0 interrupted iterations
+springboot_test   [  27% ] 10/50 VUs  0m57.6s/3m30.0s
+
+running (0m59.0s), 10/50 VUs, 85 complete and 0 interrupted iterations
+springboot_test   [  28% ] 10/50 VUs  0m58.6s/3m30.0s
+
+running (1m00.0s), 10/50 VUs, 89 complete and 0 interrupted iterations
+springboot_test   [  28% ] 10/50 VUs  0m59.6s/3m30.0s
+
+running (1m01.0s), 10/50 VUs, 91 complete and 0 interrupted iterations
+springboot_test   [  29% ] 10/50 VUs  1m00.6s/3m30.0s
+
+running (1m02.0s), 10/50 VUs, 93 complete and 0 interrupted iterations
+springboot_test   [  29% ] 10/50 VUs  1m01.6s/3m30.0s
+
+running (1m03.0s), 10/50 VUs, 94 complete and 0 interrupted iterations
+springboot_test   [  30% ] 10/50 VUs  1m02.6s/3m30.0s
+
+running (1m04.0s), 10/50 VUs, 97 complete and 0 interrupted iterations
+springboot_test   [  30% ] 10/50 VUs  1m03.6s/3m30.0s
+
+running (1m05.0s), 10/50 VUs, 99 complete and 0 interrupted iterations
+springboot_test   [  31% ] 10/50 VUs  1m04.6s/3m30.0s
+
+running (1m06.0s), 10/50 VUs, 103 complete and 0 interrupted iterations
+springboot_test   [  31% ] 10/50 VUs  1m05.6s/3m30.0s
+
+running (1m07.0s), 10/50 VUs, 104 complete and 0 interrupted iterations
+springboot_test   [  32% ] 10/50 VUs  1m06.6s/3m30.0s
+
+running (1m08.0s), 10/50 VUs, 106 complete and 0 interrupted iterations
+springboot_test   [  32% ] 10/50 VUs  1m07.6s/3m30.0s
+
+running (1m09.0s), 10/50 VUs, 107 complete and 0 interrupted iterations
+springboot_test   [  33% ] 10/50 VUs  1m08.6s/3m30.0s
+
+running (1m10.0s), 10/50 VUs, 110 complete and 0 interrupted iterations
+springboot_test   [  33% ] 10/50 VUs  1m09.6s/3m30.0s
+
+running (1m11.0s), 10/50 VUs, 113 complete and 0 interrupted iterations
+springboot_test   [  34% ] 10/50 VUs  1m10.6s/3m30.0s
+
+running (1m12.0s), 10/50 VUs, 114 complete and 0 interrupted iterations
+springboot_test   [  34% ] 10/50 VUs  1m11.6s/3m30.0s
+
+running (1m13.0s), 10/50 VUs, 117 complete and 0 interrupted iterations
+springboot_test   [  35% ] 10/50 VUs  1m12.6s/3m30.0s
+
+running (1m14.0s), 10/50 VUs, 118 complete and 0 interrupted iterations
+springboot_test   [  35% ] 10/50 VUs  1m13.6s/3m30.0s
+
+running (1m15.0s), 10/50 VUs, 119 complete and 0 interrupted iterations
+springboot_test   [  36% ] 10/50 VUs  1m14.6s/3m30.0s
+
+running (1m16.0s), 10/50 VUs, 123 complete and 0 interrupted iterations
+springboot_test   [  36% ] 10/50 VUs  1m15.6s/3m30.0s
+
+running (1m17.0s), 10/50 VUs, 125 complete and 0 interrupted iterations
+springboot_test   [  36% ] 10/50 VUs  1m16.6s/3m30.0s
+
+running (1m18.0s), 10/50 VUs, 127 complete and 0 interrupted iterations
+springboot_test   [  37% ] 10/50 VUs  1m17.6s/3m30.0s
+
+running (1m19.0s), 10/50 VUs, 129 complete and 0 interrupted iterations
+springboot_test   [  37% ] 10/50 VUs  1m18.6s/3m30.0s
+
+running (1m20.0s), 10/50 VUs, 131 complete and 0 interrupted iterations
+springboot_test   [  38% ] 10/50 VUs  1m19.6s/3m30.0s
+
+running (1m21.0s), 10/50 VUs, 134 complete and 0 interrupted iterations
+springboot_test   [  38% ] 10/50 VUs  1m20.6s/3m30.0s
+
+running (1m22.0s), 10/50 VUs, 137 complete and 0 interrupted iterations
+springboot_test   [  39% ] 10/50 VUs  1m21.6s/3m30.0s
+
+running (1m23.0s), 10/50 VUs, 137 complete and 0 interrupted iterations
+springboot_test   [  39% ] 10/50 VUs  1m22.6s/3m30.0s
+
+running (1m24.0s), 10/50 VUs, 139 complete and 0 interrupted iterations
+springboot_test   [  40% ] 10/50 VUs  1m23.6s/3m30.0s
+
+running (1m25.0s), 10/50 VUs, 143 complete and 0 interrupted iterations
+springboot_test   [  40% ] 10/50 VUs  1m24.6s/3m30.0s
+
+running (1m26.0s), 10/50 VUs, 146 complete and 0 interrupted iterations
+springboot_test   [  41% ] 10/50 VUs  1m25.6s/3m30.0s
+
+running (1m27.0s), 10/50 VUs, 147 complete and 0 interrupted iterations
+springboot_test   [  41% ] 10/50 VUs  1m26.6s/3m30.0s
+
+running (1m28.0s), 10/50 VUs, 148 complete and 0 interrupted iterations
+springboot_test   [  42% ] 10/50 VUs  1m27.6s/3m30.0s
+
+running (1m29.0s), 10/50 VUs, 152 complete and 0 interrupted iterations
+springboot_test   [  42% ] 10/50 VUs  1m28.6s/3m30.0s
+
+running (1m30.0s), 10/50 VUs, 155 complete and 0 interrupted iterations
+springboot_test   [  43% ] 10/50 VUs  1m29.6s/3m30.0s
+
+running (1m31.0s), 10/50 VUs, 155 complete and 0 interrupted iterations
+springboot_test   [  43% ] 10/50 VUs  1m30.6s/3m30.0s
+
+running (1m32.0s), 12/50 VUs, 157 complete and 0 interrupted iterations
+springboot_test   [  44% ] 12/50 VUs  1m31.6s/3m30.0s
+
+running (1m33.0s), 13/50 VUs, 160 complete and 0 interrupted iterations
+springboot_test   [  44% ] 13/50 VUs  1m32.6s/3m30.0s
+
+running (1m34.0s), 14/50 VUs, 163 complete and 0 interrupted iterations
+springboot_test   [  45% ] 14/50 VUs  1m33.6s/3m30.0s
+
+running (1m35.0s), 16/50 VUs, 166 complete and 0 interrupted iterations
+springboot_test   [  45% ] 16/50 VUs  1m34.6s/3m30.0s
+
+running (1m36.0s), 17/50 VUs, 166 complete and 0 interrupted iterations
+springboot_test   [  46% ] 17/50 VUs  1m35.6s/3m30.0s
+
+running (1m37.0s), 18/50 VUs, 171 complete and 0 interrupted iterations
+springboot_test   [  46% ] 18/50 VUs  1m36.6s/3m30.0s
+
+running (1m38.0s), 20/50 VUs, 176 complete and 0 interrupted iterations
+springboot_test   [  46% ] 20/50 VUs  1m37.6s/3m30.0s
+
+running (1m39.0s), 21/50 VUs, 180 complete and 0 interrupted iterations
+springboot_test   [  47% ] 21/50 VUs  1m38.6s/3m30.0s
+
+running (1m40.0s), 22/50 VUs, 182 complete and 0 interrupted iterations
+springboot_test   [  47% ] 22/50 VUs  1m39.6s/3m30.0s
+
+running (1m41.0s), 24/50 VUs, 185 complete and 0 interrupted iterations
+springboot_test   [  48% ] 24/50 VUs  1m40.6s/3m30.0s
+
+running (1m42.0s), 25/50 VUs, 193 complete and 0 interrupted iterations
+springboot_test   [  48% ] 25/50 VUs  1m41.6s/3m30.0s
+
+running (1m43.0s), 26/50 VUs, 197 complete and 0 interrupted iterations
+springboot_test   [  49% ] 26/50 VUs  1m42.6s/3m30.0s
+
+running (1m44.0s), 28/50 VUs, 203 complete and 0 interrupted iterations
+springboot_test   [  49% ] 28/50 VUs  1m43.6s/3m30.0s
+
+running (1m45.0s), 29/50 VUs, 205 complete and 0 interrupted iterations
+springboot_test   [  50% ] 29/50 VUs  1m44.6s/3m30.0s
+
+running (1m46.0s), 30/50 VUs, 212 complete and 0 interrupted iterations
+springboot_test   [  50% ] 30/50 VUs  1m45.6s/3m30.0s
+
+running (1m47.0s), 32/50 VUs, 220 complete and 0 interrupted iterations
+springboot_test   [  51% ] 32/50 VUs  1m46.6s/3m30.0s
+
+running (1m48.0s), 33/50 VUs, 228 complete and 0 interrupted iterations
+springboot_test   [  51% ] 33/50 VUs  1m47.6s/3m30.0s
+
+running (1m49.0s), 34/50 VUs, 232 complete and 0 interrupted iterations
+springboot_test   [  52% ] 34/50 VUs  1m48.6s/3m30.0s
+
+running (1m50.0s), 36/50 VUs, 239 complete and 0 interrupted iterations
+springboot_test   [  52% ] 36/50 VUs  1m49.6s/3m30.0s
+
+running (1m51.0s), 37/50 VUs, 246 complete and 0 interrupted iterations
+springboot_test   [  53% ] 37/50 VUs  1m50.6s/3m30.0s
+
+running (1m52.0s), 38/50 VUs, 254 complete and 0 interrupted iterations
+springboot_test   [  53% ] 38/50 VUs  1m51.6s/3m30.0s
+
+running (1m53.0s), 40/50 VUs, 258 complete and 0 interrupted iterations
+springboot_test   [  54% ] 40/50 VUs  1m52.6s/3m30.0s
+
+running (1m54.0s), 41/50 VUs, 268 complete and 0 interrupted iterations
+springboot_test   [  54% ] 41/50 VUs  1m53.6s/3m30.0s
+
+running (1m55.0s), 42/50 VUs, 277 complete and 0 interrupted iterations
+springboot_test   [  55% ] 42/50 VUs  1m54.6s/3m30.0s
+
+running (1m56.0s), 44/50 VUs, 284 complete and 0 interrupted iterations
+springboot_test   [  55% ] 44/50 VUs  1m55.6s/3m30.0s
+
+running (1m57.0s), 45/50 VUs, 294 complete and 0 interrupted iterations
+springboot_test   [  56% ] 45/50 VUs  1m56.6s/3m30.0s
+
+running (1m58.0s), 46/50 VUs, 302 complete and 0 interrupted iterations
+springboot_test   [  56% ] 46/50 VUs  1m57.6s/3m30.0s
+
+running (1m59.0s), 48/50 VUs, 311 complete and 0 interrupted iterations
+springboot_test   [  56% ] 48/50 VUs  1m58.6s/3m30.0s
+
+running (2m00.0s), 49/50 VUs, 320 complete and 0 interrupted iterations
+springboot_test   [  57% ] 49/50 VUs  1m59.6s/3m30.0s
+
+running (2m01.0s), 50/50 VUs, 326 complete and 0 interrupted iterations
+springboot_test   [  57% ] 50/50 VUs  2m00.6s/3m30.0s
+
+running (2m02.0s), 50/50 VUs, 339 complete and 0 interrupted iterations
+springboot_test   [  58% ] 50/50 VUs  2m01.6s/3m30.0s
+
+running (2m03.0s), 50/50 VUs, 349 complete and 0 interrupted iterations
+springboot_test   [  58% ] 50/50 VUs  2m02.6s/3m30.0s
+
+running (2m04.0s), 50/50 VUs, 363 complete and 0 interrupted iterations
+springboot_test   [  59% ] 50/50 VUs  2m03.6s/3m30.0s
+
+running (2m05.0s), 50/50 VUs, 373 complete and 0 interrupted iterations
+springboot_test   [  59% ] 50/50 VUs  2m04.6s/3m30.0s
+
+running (2m06.0s), 50/50 VUs, 382 complete and 0 interrupted iterations
+springboot_test   [  60% ] 50/50 VUs  2m05.6s/3m30.0s
+
+running (2m07.0s), 50/50 VUs, 393 complete and 0 interrupted iterations
+springboot_test   [  60% ] 50/50 VUs  2m06.6s/3m30.0s
+
+running (2m08.0s), 50/50 VUs, 402 complete and 0 interrupted iterations
+springboot_test   [  61% ] 50/50 VUs  2m07.6s/3m30.0s
+
+running (2m09.0s), 50/50 VUs, 413 complete and 0 interrupted iterations
+springboot_test   [  61% ] 50/50 VUs  2m08.6s/3m30.0s
+
+running (2m10.0s), 50/50 VUs, 427 complete and 0 interrupted iterations
+springboot_test   [  62% ] 50/50 VUs  2m09.6s/3m30.0s
+
+running (2m11.0s), 50/50 VUs, 436 complete and 0 interrupted iterations
+springboot_test   [  62% ] 50/50 VUs  2m10.6s/3m30.0s
+
+running (2m12.0s), 50/50 VUs, 443 complete and 0 interrupted iterations
+springboot_test   [  63% ] 50/50 VUs  2m11.6s/3m30.0s
+
+running (2m13.0s), 50/50 VUs, 455 complete and 0 interrupted iterations
+springboot_test   [  63% ] 50/50 VUs  2m12.6s/3m30.0s
+
+running (2m14.0s), 50/50 VUs, 467 complete and 0 interrupted iterations
+springboot_test   [  64% ] 50/50 VUs  2m13.6s/3m30.0s
+
+running (2m15.0s), 50/50 VUs, 478 complete and 0 interrupted iterations
+springboot_test   [  64% ] 50/50 VUs  2m14.6s/3m30.0s
+
+running (2m16.0s), 50/50 VUs, 489 complete and 0 interrupted iterations
+springboot_test   [  65% ] 50/50 VUs  2m15.6s/3m30.0s
+
+running (2m17.0s), 50/50 VUs, 495 complete and 0 interrupted iterations
+springboot_test   [  65% ] 50/50 VUs  2m16.6s/3m30.0s
+
+running (2m18.0s), 50/50 VUs, 503 complete and 0 interrupted iterations
+springboot_test   [  66% ] 50/50 VUs  2m17.6s/3m30.0s
+
+running (2m19.0s), 50/50 VUs, 515 complete and 0 interrupted iterations
+springboot_test   [  66% ] 50/50 VUs  2m18.6s/3m30.0s
+
+running (2m20.0s), 50/50 VUs, 527 complete and 0 interrupted iterations
+springboot_test   [  66% ] 50/50 VUs  2m19.6s/3m30.0s
+
+running (2m21.0s), 50/50 VUs, 542 complete and 0 interrupted iterations
+springboot_test   [  67% ] 50/50 VUs  2m20.6s/3m30.0s
+
+running (2m22.0s), 50/50 VUs, 547 complete and 0 interrupted iterations
+springboot_test   [  67% ] 50/50 VUs  2m21.6s/3m30.0s
+
+running (2m23.0s), 50/50 VUs, 555 complete and 0 interrupted iterations
+springboot_test   [  68% ] 50/50 VUs  2m22.6s/3m30.0s
+
+running (2m24.0s), 50/50 VUs, 569 complete and 0 interrupted iterations
+springboot_test   [  68% ] 50/50 VUs  2m23.6s/3m30.0s
+
+running (2m25.0s), 50/50 VUs, 582 complete and 0 interrupted iterations
+springboot_test   [  69% ] 50/50 VUs  2m24.6s/3m30.0s
+
+running (2m26.0s), 50/50 VUs, 594 complete and 0 interrupted iterations
+springboot_test   [  69% ] 50/50 VUs  2m25.6s/3m30.0s
+
+running (2m27.0s), 50/50 VUs, 600 complete and 0 interrupted iterations
+springboot_test   [  70% ] 50/50 VUs  2m26.6s/3m30.0s
+
+running (2m28.0s), 50/50 VUs, 613 complete and 0 interrupted iterations
+springboot_test   [  70% ] 50/50 VUs  2m27.6s/3m30.0s
+
+running (2m29.0s), 50/50 VUs, 625 complete and 0 interrupted iterations
+springboot_test   [  71% ] 50/50 VUs  2m28.6s/3m30.0s
+
+running (2m30.0s), 50/50 VUs, 635 complete and 0 interrupted iterations
+springboot_test   [  71% ] 50/50 VUs  2m29.6s/3m30.0s
+
+running (2m31.0s), 50/50 VUs, 644 complete and 0 interrupted iterations
+springboot_test   [  72% ] 50/50 VUs  2m30.6s/3m30.0s
+
+running (2m32.0s), 50/50 VUs, 652 complete and 0 interrupted iterations
+springboot_test   [  72% ] 50/50 VUs  2m31.6s/3m30.0s
+
+running (2m33.0s), 50/50 VUs, 663 complete and 0 interrupted iterations
+springboot_test   [  73% ] 50/50 VUs  2m32.6s/3m30.0s
+
+running (2m34.0s), 50/50 VUs, 675 complete and 0 interrupted iterations
+springboot_test   [  73% ] 50/50 VUs  2m33.6s/3m30.0s
+
+running (2m35.0s), 50/50 VUs, 684 complete and 0 interrupted iterations
+springboot_test   [  74% ] 50/50 VUs  2m34.6s/3m30.0s
+
+running (2m36.0s), 50/50 VUs, 697 complete and 0 interrupted iterations
+springboot_test   [  74% ] 50/50 VUs  2m35.6s/3m30.0s
+
+running (2m37.0s), 50/50 VUs, 706 complete and 0 interrupted iterations
+springboot_test   [  75% ] 50/50 VUs  2m36.6s/3m30.0s
+
+running (2m38.0s), 50/50 VUs, 715 complete and 0 interrupted iterations
+springboot_test   [  75% ] 50/50 VUs  2m37.6s/3m30.0s
+
+running (2m39.0s), 50/50 VUs, 729 complete and 0 interrupted iterations
+springboot_test   [  76% ] 50/50 VUs  2m38.6s/3m30.0s
+
+running (2m40.0s), 50/50 VUs, 739 complete and 0 interrupted iterations
+springboot_test   [  76% ] 50/50 VUs  2m39.6s/3m30.0s
+
+running (2m41.0s), 50/50 VUs, 751 complete and 0 interrupted iterations
+springboot_test   [  76% ] 50/50 VUs  2m40.6s/3m30.0s
+
+running (2m42.0s), 50/50 VUs, 758 complete and 0 interrupted iterations
+springboot_test   [  77% ] 50/50 VUs  2m41.6s/3m30.0s
+
+running (2m43.0s), 50/50 VUs, 773 complete and 0 interrupted iterations
+springboot_test   [  77% ] 50/50 VUs  2m42.6s/3m30.0s
+
+running (2m44.0s), 50/50 VUs, 786 complete and 0 interrupted iterations
+springboot_test   [  78% ] 50/50 VUs  2m43.6s/3m30.0s
+
+running (2m45.0s), 50/50 VUs, 795 complete and 0 interrupted iterations
+springboot_test   [  78% ] 50/50 VUs  2m44.6s/3m30.0s
+
+running (2m46.0s), 50/50 VUs, 804 complete and 0 interrupted iterations
+springboot_test   [  79% ] 50/50 VUs  2m45.6s/3m30.0s
+
+running (2m47.0s), 50/50 VUs, 813 complete and 0 interrupted iterations
+springboot_test   [  79% ] 50/50 VUs  2m46.6s/3m30.0s
+
+running (2m48.0s), 50/50 VUs, 830 complete and 0 interrupted iterations
+springboot_test   [  80% ] 50/50 VUs  2m47.6s/3m30.0s
+
+running (2m49.0s), 50/50 VUs, 840 complete and 0 interrupted iterations
+springboot_test   [  80% ] 50/50 VUs  2m48.6s/3m30.0s
+
+running (2m50.0s), 50/50 VUs, 845 complete and 0 interrupted iterations
+springboot_test   [  81% ] 50/50 VUs  2m49.6s/3m30.0s
+
+running (2m51.0s), 50/50 VUs, 854 complete and 0 interrupted iterations
+springboot_test   [  81% ] 50/50 VUs  2m50.6s/3m30.0s
+
+running (2m52.0s), 50/50 VUs, 861 complete and 0 interrupted iterations
+springboot_test   [  82% ] 50/50 VUs  2m51.6s/3m30.0s
+
+running (2m53.0s), 50/50 VUs, 881 complete and 0 interrupted iterations
+springboot_test   [  82% ] 50/50 VUs  2m52.6s/3m30.0s
+
+running (2m54.0s), 50/50 VUs, 892 complete and 0 interrupted iterations
+springboot_test   [  83% ] 50/50 VUs  2m53.6s/3m30.0s
+
+running (2m55.0s), 50/50 VUs, 901 complete and 0 interrupted iterations
+springboot_test   [  83% ] 50/50 VUs  2m54.6s/3m30.0s
+
+running (2m56.0s), 50/50 VUs, 909 complete and 0 interrupted iterations
+springboot_test   [  84% ] 50/50 VUs  2m55.6s/3m30.0s
+
+running (2m57.0s), 50/50 VUs, 921 complete and 0 interrupted iterations
+springboot_test   [  84% ] 50/50 VUs  2m56.6s/3m30.0s
+
+running (2m58.0s), 50/50 VUs, 938 complete and 0 interrupted iterations
+springboot_test   [  85% ] 50/50 VUs  2m57.6s/3m30.0s
+
+running (2m59.0s), 50/50 VUs, 945 complete and 0 interrupted iterations
+springboot_test   [  85% ] 50/50 VUs  2m58.6s/3m30.0s
+
+running (3m00.0s), 50/50 VUs, 951 complete and 0 interrupted iterations
+springboot_test   [  86% ] 50/50 VUs  2m59.6s/3m30.0s
+
+running (3m01.0s), 50/50 VUs, 952 complete and 0 interrupted iterations
+springboot_test   [  86% ] 50/50 VUs  3m00.6s/3m30.0s
+
+running (3m02.0s), 50/50 VUs, 956 complete and 0 interrupted iterations
+springboot_test   [  86% ] 50/50 VUs  3m01.6s/3m30.0s
+
+running (3m03.0s), 49/50 VUs, 961 complete and 0 interrupted iterations
+springboot_test   [  87% ] 49/50 VUs  3m02.6s/3m30.0s
+
+running (3m04.0s), 47/50 VUs, 978 complete and 0 interrupted iterations
+springboot_test   [  87% ] 47/50 VUs  3m03.6s/3m30.0s
+
+running (3m05.0s), 44/50 VUs, 995 complete and 0 interrupted iterations
+springboot_test   [  88% ] 44/50 VUs  3m04.6s/3m30.0s
+
+running (3m06.0s), 44/50 VUs, 1002 complete and 0 interrupted iterations
+springboot_test   [  88% ] 44/50 VUs  3m05.6s/3m30.0s
+
+running (3m07.0s), 42/50 VUs, 1008 complete and 0 interrupted iterations
+springboot_test   [  89% ] 42/50 VUs  3m06.6s/3m30.0s
+
+running (3m08.0s), 42/50 VUs, 1018 complete and 0 interrupted iterations
+springboot_test   [  89% ] 42/50 VUs  3m07.6s/3m30.0s
+
+running (3m09.0s), 40/50 VUs, 1032 complete and 0 interrupted iterations
+springboot_test   [  90% ] 40/50 VUs  3m08.6s/3m30.0s
+
+running (3m10.0s), 38/50 VUs, 1043 complete and 0 interrupted iterations
+springboot_test   [  90% ] 38/50 VUs  3m09.6s/3m30.0s
+
+running (3m11.0s), 36/50 VUs, 1048 complete and 0 interrupted iterations
+springboot_test   [  91% ] 36/50 VUs  3m10.6s/3m30.0s
+
+running (3m12.0s), 33/50 VUs, 1056 complete and 0 interrupted iterations
+springboot_test   [  91% ] 33/50 VUs  3m11.6s/3m30.0s
+
+running (3m13.0s), 31/50 VUs, 1061 complete and 0 interrupted iterations
+springboot_test   [  92% ] 31/50 VUs  3m12.6s/3m30.0s
+
+running (3m14.0s), 30/50 VUs, 1077 complete and 0 interrupted iterations
+springboot_test   [  92% ] 30/50 VUs  3m13.6s/3m30.0s
+
+running (3m15.0s), 27/50 VUs, 1082 complete and 0 interrupted iterations
+springboot_test   [  93% ] 27/50 VUs  3m14.6s/3m30.0s
+
+running (3m16.0s), 27/50 VUs, 1086 complete and 0 interrupted iterations
+springboot_test   [  93% ] 27/50 VUs  3m15.6s/3m30.0s
+
+running (3m17.0s), 26/50 VUs, 1089 complete and 0 interrupted iterations
+springboot_test   [  94% ] 26/50 VUs  3m16.6s/3m30.0s
+
+running (3m18.0s), 23/50 VUs, 1099 complete and 0 interrupted iterations
+springboot_test   [  94% ] 23/50 VUs  3m17.6s/3m30.0s
+
+running (3m19.0s), 22/50 VUs, 1107 complete and 0 interrupted iterations
+springboot_test   [  95% ] 22/50 VUs  3m18.6s/3m30.0s
+
+running (3m20.0s), 22/50 VUs, 1111 complete and 0 interrupted iterations
+springboot_test   [  95% ] 22/50 VUs  3m19.6s/3m30.0s
+
+running (3m21.0s), 20/50 VUs, 1115 complete and 0 interrupted iterations
+springboot_test   [  96% ] 20/50 VUs  3m20.6s/3m30.0s
+
+running (3m22.0s), 19/50 VUs, 1118 complete and 0 interrupted iterations
+springboot_test   [  96% ] 19/50 VUs  3m21.6s/3m30.0s
+
+running (3m23.0s), 18/50 VUs, 1123 complete and 0 interrupted iterations
+springboot_test   [  96% ] 18/50 VUs  3m22.6s/3m30.0s
+
+running (3m24.0s), 17/50 VUs, 1125 complete and 0 interrupted iterations
+springboot_test   [  97% ] 17/50 VUs  3m23.6s/3m30.0s
+
+running (3m25.0s), 15/50 VUs, 1130 complete and 0 interrupted iterations
+springboot_test   [  97% ] 15/50 VUs  3m24.6s/3m30.0s
+
+running (3m26.0s), 14/50 VUs, 1132 complete and 0 interrupted iterations
+springboot_test   [  98% ] 14/50 VUs  3m25.6s/3m30.0s
+
+running (3m27.0s), 11/50 VUs, 1137 complete and 0 interrupted iterations
+springboot_test   [  98% ] 11/50 VUs  3m26.6s/3m30.0s
+
+running (3m28.0s), 08/50 VUs, 1141 complete and 0 interrupted iterations
+springboot_test   [  99% ] 08/50 VUs  3m27.6s/3m30.0s
+
+running (3m29.0s), 06/50 VUs, 1145 complete and 0 interrupted iterations
+springboot_test   [  99% ] 06/50 VUs  3m28.6s/3m30.0s
+
+running (3m30.0s), 05/50 VUs, 1146 complete and 0 interrupted iterations
+springboot_test   [ 100% ] 05/50 VUs  3m29.6s/3m30.0s
+
+running (3m31.0s), 03/50 VUs, 1148 complete and 0 interrupted iterations
+springboot_test ↓ [ 100% ] 04/50 VUs  3m30s
+
+running (3m32.0s), 02/50 VUs, 1149 complete and 0 interrupted iterations
+springboot_test ↓ [ 100% ] 04/50 VUs  3m30s
+
+running (3m33.0s), 02/50 VUs, 1149 complete and 0 interrupted iterations
+springboot_test ↓ [ 100% ] 04/50 VUs  3m30s
+time="2026-01-12T14:01:21Z" level=info msg="Spring Boot load test completed" source=console
+time="2026-01-12T14:01:21Z" level=info msg="Admin user: admin_1768226267994@loadtest.com" source=console
+
+
+  █ THRESHOLDS 
+
+    http_req_duration
+    ✓ 'p(95)<500' p(95)=361.98ms
+    ✗ 'p(99)<1000' p(99)=1.56s
+
+    http_req_failed
+    ✓ 'rate<0.01' rate=0.00%
+
+    http_reqs
+    ✓ 'rate>10' rate=21.560507/s
+
+    springboot_auth_duration
+    ✗ 'p(95)<300' p(95)=396.4
+
+    springboot_crud_duration
+    ✓ 'p(95)<200' p(95)=117
+
+    springboot_errors
+    ✓ 'rate<0.05' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 9211    43.116334/s
+    checks_succeeded...: 100.00% 9211 out of 9211
+    checks_failed......: 0.00%   0 out of 9211
+
+    ✓ health check status is 200
+    ✓ register status is 201
+    ✓ register returns tokens
+    ✓ register has access token
+    ✓ register has refresh token
+    ✓ login status is 200
+    ✓ login has access token
+    ✓ refresh status is 200
+    ✓ refresh has new access token
+    ✓ get users status is 200
+
+    CUSTOM
+    springboot_auth_duration.......: avg=143.85375 min=1      med=95      max=2862  p(90)=286      p(95)=396.4    p(99)=1767.08
+    springboot_crud_duration.......: avg=45.662902 min=1      med=11      max=2640  p(90)=67       p(95)=117      p(99)=1008   
+    springboot_errors..............: 0.00%  0 out of 4604
+
+    HTTP
+    http_req_duration..............: avg=118.84ms  min=1.04ms med=79.52ms max=2.86s p(90)=249.17ms p(95)=361.98ms p(99)=1.56s  
+      { expected_response:true }...: avg=118.84ms  min=1.04ms med=79.52ms max=2.86s p(90)=249.17ms p(95)=361.98ms p(99)=1.56s  
+    http_req_failed................: 0.00%  0 out of 4606
+    http_reqs......................: 4606   21.560507/s
+
+    EXECUTION
+    iteration_duration.............: avg=4.76s     min=3.3s   med=4.71s   max=7.58s p(90)=5.42s    p(95)=5.84s    p(99)=6.91s  
+    iterations.....................: 1151   5.387786/s
+    vus............................: 2      min=0         max=50
+    vus_max........................: 50     min=50        max=50
+
+    NETWORK
+    data_received..................: 6.0 MB 28 kB/s
+    data_sent......................: 1.4 MB 6.3 kB/s
+
+
+
+
+running (3m33.6s), 00/50 VUs, 1151 complete and 0 interrupted iterations
+springboot_test ✓ [ 100% ] 00/50 VUs  3m30s
+time="2026-01-12T14:01:21Z" level=error msg="thresholds on metrics 'http_req_duration, springboot_auth_duration' have been crossed"

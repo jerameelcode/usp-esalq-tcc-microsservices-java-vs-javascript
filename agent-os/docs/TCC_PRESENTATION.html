@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCC - Microsserviços NestJS vs Spring Boot</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; color: #eee; }
+        .slide { min-height: 100vh; padding: 60px; display: flex; flex-direction: column; justify-content: center; page-break-after: always; }
+        .slide:nth-child(even) { background: #16213e; }
+        .slide:nth-child(odd) { background: #1a1a2e; }
+        h1 { font-size: 2.8em; color: #00d9ff; margin-bottom: 30px; }
+        h2 { font-size: 2.2em; color: #00d9ff; margin-bottom: 25px; }
+        h3 { font-size: 1.6em; color: #ffd700; margin: 20px 0 15px; }
+        p, li { font-size: 1.3em; line-height: 1.8; margin-bottom: 15px; }
+        ul { margin-left: 40px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 1.1em; }
+        th, td { padding: 15px; text-align: left; border: 1px solid #444; }
+        th { background: #0f3460; color: #00d9ff; }
+        tr:nth-child(even) { background: #1a1a3e; }
+        .highlight { color: #00d9ff; font-weight: bold; }
+        .winner { color: #00ff88; }
+        .center { text-align: center; }
+        .title-slide { text-align: center; }
+        .title-slide h1 { font-size: 3.2em; margin-bottom: 40px; }
+        .subtitle { font-size: 1.8em; color: #aaa; margin-bottom: 60px; }
+        .author { font-size: 1.5em; margin-top: 40px; }
+        code { background: #0f3460; padding: 3px 8px; border-radius: 4px; font-family: monospace; }
+        .code-block { background: #0f3460; padding: 20px; border-radius: 8px; margin: 20px 0; font-family: monospace; white-space: pre; overflow-x: auto; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .box { background: #0f3460; padding: 25px; border-radius: 10px; margin: 15px 0; }
+        .box.green { border-left: 5px solid #00ff88; }
+        .box.red { border-left: 5px solid #ff6b6b; }
+        .box.blue { border-left: 5px solid #00d9ff; }
+        @media print { .slide { page-break-after: always; } body { background: white; color: black; } }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Título -->
+<div class="slide title-slide">
+    <h1>Adoção de Microsserviços com<br>JavaScript (NestJS) e Java (Spring Boot)</h1>
+    <p class="subtitle">Um Estudo Prático</p>
+    <p class="author"><strong>Jerameel João Gonga</strong></p>
+    <p>MBA em Engenharia de Software – USP/Esalq – 2026</p>
+    <p style="margin-top: 40px;">Orientador: João Choma Neto</p>
+</div>
+
+<!-- Slide 2: Agenda -->
+<div class="slide">
+    <h1>Agenda</h1>
+    <div class="two-col">
+        <div>
+            <h3>Parte 1</h3>
+            <ul>
+                <li>Introdução e Contexto</li>
+                <li>Objetivos do Estudo</li>
+                <li>Metodologia</li>
+                <li>Arquitetura dos Microsserviços</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Parte 2</h3>
+            <ul>
+                <li>Implementação Comparativa</li>
+                <li>Resultados dos Benchmarks</li>
+                <li>Análise e Discussão</li>
+                <li>Conclusões e Recomendações</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3: Introdução -->
+<div class="slide">
+    <h1>Introdução</h1>
+    <h3>O Desafio da Escolha Tecnológica</h3>
+    <div class="box blue">
+        <p><strong>Contexto:</strong> Arquitetura de microsserviços em crescimento exponencial</p>
+    </div>
+    <div class="box">
+        <p><strong>O Problema:</strong></p>
+        <p style="font-size: 1.5em; text-align: center; color: #ffd700; margin: 20px 0;">
+            "Qual framework escolher: <span class="highlight">NestJS</span> ou <span class="highlight">Spring Boot</span>?"
+        </p>
+    </div>
+    <div class="box red">
+        <p><strong>Gap Identificado:</strong></p>
+        <ul>
+            <li>Poucos estudos práticos comparativos</li>
+            <li>Benchmarks existentes são teóricos ou desatualizados</li>
+            <li>Falta análise com funcionalidades reais (auth, CRUD, etc.)</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 4: Objetivos -->
+<div class="slide">
+    <h1>Objetivos</h1>
+    <h3>Objetivo Geral</h3>
+    <p>Comparar <span class="highlight">NestJS</span> e <span class="highlight">Spring Boot</span> no desenvolvimento de microsserviços backend</p>
+    
+    <table style="margin-top: 30px;">
+        <tr><th>Critério</th><th>Descrição</th></tr>
+        <tr><td>🚀 Desempenho</td><td>Tempo de resposta e throughput</td></tr>
+        <tr><td>📈 Escalabilidade</td><td>Comportamento sob carga</td></tr>
+        <tr><td>💾 Consumo de Recursos</td><td>CPU e memória</td></tr>
+        <tr><td>🔐 Segurança</td><td>Autenticação JWT</td></tr>
+    </table>
+    
+    <h3 style="margin-top: 30px;">Objetivos Específicos</h3>
+    <ul>
+        <li>Implementar microsserviços <strong>funcionalmente equivalentes</strong></li>
+        <li>Executar testes de carga <strong>controlados e reproduzíveis</strong></li>
+        <li>Fornecer <strong>subsídios técnicos</strong> para tomada de decisão</li>
+    </ul>
+</div>
+
+<!-- Slide 5: Metodologia -->
+<div class="slide">
+    <h1>Metodologia</h1>
+    <h3>Abordagem Experimental</h3>
+    <div class="code-block" style="text-align: center; font-size: 1.3em;">
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│  Implementação  │ → │   Testes de     │ → │    Análise      │
+│  Equivalente    │    │   Carga (k6)    │    │   Comparativa   │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+    </div>
+    
+    <div class="two-col" style="margin-top: 30px;">
+        <div class="box">
+            <h3>Ambiente de Testes</h3>
+            <ul>
+                <li><strong>Containerização:</strong> Docker</li>
+                <li><strong>Banco de Dados:</strong> PostgreSQL 16</li>
+                <li><strong>Ferramenta:</strong> Grafana k6</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h3>Cenários de Carga</h3>
+            <ul>
+                <li><strong>Moderado:</strong> 50 VUs</li>
+                <li><strong>Alto:</strong> 100 VUs</li>
+                <li><strong>Extremo:</strong> 200 VUs</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: Arquitetura -->
+<div class="slide">
+    <h1>Arquitetura dos Microsserviços</h1>
+    <div class="code-block" style="text-align: center;">
+                    ┌──────────────────────────────────┐
+                    │          Load Balancer           │
+                    └───────────────┬──────────────────┘
+                                    │
+            ┌───────────────────────┴───────────────────────┐
+            │                                               │
+            ▼                                               ▼
+    ┌───────────────────┐                     ┌───────────────────┐
+    │   Spring Boot     │                     │     NestJS        │
+    │   (Java 17)       │                     │   (TypeScript)    │
+    │   Port: 8080      │                     │   Port: 3000      │
+    └─────────┬─────────┘                     └─────────┬─────────┘
+              │                                         │
+              └─────────────────┬───────────────────────┘
+                                │
+                                ▼
+                      ┌─────────────────┐
+                      │   PostgreSQL    │
+                      │   Port: 5432    │
+                      └─────────────────┘
+    </div>
+</div>
+
+<!-- Slide 7: Features Implementadas -->
+<div class="slide">
+    <h1>Funcionalidades Implementadas</h1>
+    <table>
+        <tr><th>Feature</th><th>Spring Boot</th><th>NestJS</th></tr>
+        <tr><td>User Entity</td><td>JPA + Hibernate</td><td>TypeORM</td></tr>
+        <tr><td>CRUD REST API</td><td>Spring MVC</td><td>Controllers</td></tr>
+        <tr><td>JWT Auth</td><td>Spring Security + JJWT</td><td>Passport.js</td></tr>
+        <tr><td>Validação</td><td>Bean Validation</td><td>class-validator</td></tr>
+        <tr><td>DTO Mapping</td><td>MapStruct</td><td>class-transformer</td></tr>
+        <tr><td>Paginação</td><td>Pageable</td><td>Query params</td></tr>
+        <tr><td>HATEOAS</td><td>Spring HATEOAS</td><td>Custom links</td></tr>
+        <tr><td>Exception Handler</td><td>@ControllerAdvice</td><td>ExceptionFilter</td></tr>
+        <tr><td>Password Hash</td><td>BCrypt (cost 10)</td><td>bcrypt (cost 10)</td></tr>
+    </table>
+</div>
+
+<!-- Slide 8: Resultados 50 VUs -->
+<div class="slide">
+    <h1>Resultados - 50 VUs (Carga Moderada)</h1>
+    <table>
+        <tr><th>Métrica</th><th>Spring Boot</th><th>NestJS</th><th>Vencedor</th></tr>
+        <tr><td>Tempo Médio</td><td>69.95ms</td><td>52.97ms</td><td class="winner">🏆 NestJS (-24%)</td></tr>
+        <tr><td>Mediana</td><td>41ms</td><td>28ms</td><td class="winner">🏆 NestJS (-32%)</td></tr>
+        <tr><td>p(95)</td><td>237.77ms</td><td>144.55ms</td><td class="winner">🏆 NestJS (-39%)</td></tr>
+        <tr><td>Throughput</td><td>41.77 req/s</td><td>42.59 req/s</td><td class="winner">🏆 NestJS (+2%)</td></tr>
+        <tr><td>Erros</td><td>0.00%</td><td>0.00%</td><td>🤝 Empate</td></tr>
+    </table>
+    <div class="box green" style="margin-top: 30px;">
+        <p style="text-align: center; font-size: 1.4em;">✅ Ambos passaram em todos os thresholds</p>
+    </div>
+</div>
+
+<!-- Slide 9: Resultados 100 VUs -->
+<div class="slide">
+    <h1>Resultados - 100 VUs (Carga Alta)</h1>
+    <table>
+        <tr><th>Métrica</th><th>Spring Boot</th><th>NestJS</th><th>Vencedor</th></tr>
+        <tr><td>Tempo Médio</td><td>138.43ms</td><td>112.00ms</td><td class="winner">🏆 NestJS (-19%)</td></tr>
+        <tr><td>Mediana</td><td>82ms</td><td>68ms</td><td class="winner">🏆 NestJS (-17%)</td></tr>
+        <tr><td>p(95)</td><td>624.04ms</td><td>583.94ms</td><td class="winner">🏆 NestJS (-6%)</td></tr>
+        <tr><td>Throughput</td><td>78.91 req/s</td><td>80.83 req/s</td><td class="winner">🏆 NestJS (+2%)</td></tr>
+        <tr><td>Erros</td><td>0.00%</td><td>0.00%</td><td>🤝 Empate</td></tr>
+    </table>
+    <div class="box" style="margin-top: 30px; border-left: 5px solid #ffd700;">
+        <p style="text-align: center; font-size: 1.4em;">⚠️ Ambos cruzaram o threshold de p(95) &lt; 500ms</p>
+    </div>
+</div>
+
+<!-- Slide 10: Resultados 200 VUs -->
+<div class="slide">
+    <h1>Resultados - 200 VUs (Carga Extrema)</h1>
+    <table>
+        <tr><th>Métrica</th><th>Spring Boot</th><th>NestJS</th><th>Vencedor</th></tr>
+        <tr><td>Tempo Médio</td><td>735.14ms</td><td>628.72ms</td><td class="winner">🏆 NestJS (-14%)</td></tr>
+        <tr><td>Mediana</td><td>534.31ms</td><td>74.67ms</td><td class="winner">🏆 NestJS (-86%)</td></tr>
+        <tr><td>Máximo</td><td>4.66s</td><td>7.17s</td><td class="winner">🏆 Spring Boot (-35%)</td></tr>
+        <tr><td>p(95)</td><td>1.96s</td><td>2.04s</td><td class="winner">🏆 Spring Boot (-4%)</td></tr>
+        <tr><td>Throughput</td><td>107.4 req/s</td><td>111.2 req/s</td><td class="winner">🏆 NestJS (+4%)</td></tr>
+        <tr><td>Erros</td><td>0.00%</td><td>0.00%</td><td>🤝 Empate</td></tr>
+    </table>
+    <div class="box blue" style="margin-top: 20px;">
+        <p><strong>Observação:</strong> NestJS tem mediana muito baixa, mas outliers mais severos. Spring Boot mais consistente.</p>
+    </div>
+</div>
+
+<!-- Slide 11: Gráfico Throughput -->
+<div class="slide">
+    <h1>Escalabilidade de Throughput</h1>
+    <div class="code-block" style="font-size: 1.2em;">
+Requisições/segundo
+     │
+ 120 ┤                                    ● NestJS (111.2)
+     │                                    ■ Spring Boot (107.4)
+ 100 ┤
+     │
+  80 ┤              ● NestJS (80.83)
+     │              ■ Spring Boot (78.91)
+  60 ┤
+     │
+  40 ┤  ● NestJS (42.59)
+     │  ■ Spring Boot (41.77)
+  20 ┤
+     │
+   0 ┼──────────────┬──────────────┬──────────────
+           50 VUs        100 VUs       200 VUs
+    </div>
+    <div class="box green" style="margin-top: 20px;">
+        <p style="text-align: center;"><strong>NestJS mantém throughput 2-4% superior em todos os níveis de carga</strong></p>
+    </div>
+</div>
+
+<!-- Slide 12: Confiabilidade -->
+<div class="slide">
+    <h1>Confiabilidade</h1>
+    <div style="text-align: center; margin: 60px 0;">
+        <div class="box green" style="display: inline-block; padding: 40px 80px;">
+            <p style="font-size: 2em; margin-bottom: 20px;">Taxa de Erros</p>
+            <p style="font-size: 4em; color: #00ff88;">0.00%</p>
+            <p style="font-size: 1.5em; margin-top: 20px;">Em TODOS os cenários</p>
+        </div>
+    </div>
+    <div class="two-col">
+        <div class="box">
+            <h3>Spring Boot</h3>
+            <ul>
+                <li>50 VUs: ✅ 0 erros</li>
+                <li>100 VUs: ✅ 0 erros</li>
+                <li>200 VUs: ✅ 0 erros</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h3>NestJS</h3>
+            <ul>
+                <li>50 VUs: ✅ 0 erros</li>
+                <li>100 VUs: ✅ 0 erros</li>
+                <li>200 VUs: ✅ 0 erros</li>
+            </ul>
+        </div>
+    </div>
+    <p style="text-align: center; font-size: 1.5em; margin-top: 30px; color: #00ff88;">✅ AMBOS SÃO PRODUCTION-READY</p>
+</div>
+
+<!-- Slide 13: Prós Spring Boot -->
+<div class="slide">
+    <h1>Spring Boot - Prós e Contras</h1>
+    <div class="two-col">
+        <div class="box green">
+            <h3>✅ Vantagens</h3>
+            <ul>
+                <li>Ecossistema maduro e estável</li>
+                <li>Excelente para sistemas corporativos</li>
+                <li>Spring Security muito robusto</li>
+                <li>Melhor comportamento em tail latencies</li>
+                <li>Grande base de desenvolvedores Java</li>
+                <li>Integração enterprise (Kafka, OAuth2)</li>
+            </ul>
+        </div>
+        <div class="box red">
+            <h3>❌ Desvantagens</h3>
+            <ul>
+                <li>JVM warm-up time</li>
+                <li>Maior consumo de memória</li>
+                <li>Configuração mais verbosa</li>
+                <li>Curva de aprendizado inicial</li>
+                <li>Mais lento em cargas moderadas</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 14: Prós NestJS -->
+<div class="slide">
+    <h1>NestJS - Prós e Contras</h1>
+    <div class="two-col">
+        <div class="box green">
+            <h3>✅ Vantagens</h3>
+            <ul>
+                <li>Melhor performance em cargas baixas-médias</li>
+                <li>Menor consumo de recursos</li>
+                <li>Rápido para desenvolver (TypeScript)</li>
+                <li>Event loop eficiente para I/O</li>
+                <li>Familiar para devs frontend</li>
+                <li>Documentação excelente</li>
+            </ul>
+        </div>
+        <div class="box red">
+            <h3>❌ Desvantagens</h3>
+            <ul>
+                <li>Outliers em cargas extremas</li>
+                <li>Ecossistema menos maduro</li>
+                <li>Single-threaded (precisa clustering)</li>
+                <li>Menos opções enterprise-ready</li>
+                <li>Tipagem pode ser inconsistente</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 15: Recomendações -->
+<div class="slide">
+    <h1>Recomendações</h1>
+    <div class="two-col">
+        <div class="box" style="border-left: 5px solid #00d9ff;">
+            <h3>🎯 Escolha NestJS quando:</h3>
+            <ul>
+                <li>Startups e MVPs</li>
+                <li>Equipe com background JavaScript</li>
+                <li>Microsserviços leves e APIs REST</li>
+                <li>Carga esperada: &lt; 100 VUs</li>
+                <li>Time-to-market é prioridade</li>
+            </ul>
+        </div>
+        <div class="box" style="border-left: 5px solid #ffd700;">
+            <h3>🎯 Escolha Spring Boot quando:</h3>
+            <ul>
+                <li>Sistemas corporativos/enterprise</li>
+                <li>Requisitos de SLA rigorosos</li>
+                <li>Integração com sistemas legados Java</li>
+                <li>Carga esperada: &gt; 100 VUs</li>
+                <li>Segurança e compliance críticos</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 16: Conclusão -->
+<div class="slide">
+    <h1>Conclusões</h1>
+    <div class="box blue">
+        <h3>1️⃣ Não Existe "Melhor" Universal</h3>
+        <p>A escolha depende do <strong>contexto</strong> do projeto</p>
+    </div>
+    <div class="box green">
+        <h3>2️⃣ NestJS é Mais Rápido em Cargas Moderadas</h3>
+        <p>24-39% mais rápido até 50 VUs</p>
+    </div>
+    <div class="box" style="border-left: 5px solid #ffd700;">
+        <h3>3️⃣ Spring Boot é Mais Consistente Sob Estresse</h3>
+        <p>Menores picos de latência em 200 VUs</p>
+    </div>
+    <div class="box green">
+        <h3>4️⃣ Ambos São Production-Ready</h3>
+        <p>0% de erros em todos os cenários</p>
+    </div>
+</div>
+
+<!-- Slide 17: Resumo Final -->
+<div class="slide">
+    <h1>Resumo Final</h1>
+    <table>
+        <tr><th>Critério</th><th>Vencedor</th><th>Margem</th></tr>
+        <tr><td>Performance (50 VUs)</td><td class="winner">🏆 NestJS</td><td>24% mais rápido</td></tr>
+        <tr><td>Performance (100 VUs)</td><td class="winner">🏆 NestJS</td><td>19% mais rápido</td></tr>
+        <tr><td>Performance (200 VUs)</td><td class="winner">🏆 NestJS</td><td>14% mais rápido</td></tr>
+        <tr><td>Consistência</td><td class="winner">🏆 Spring Boot</td><td>Menos outliers</td></tr>
+        <tr><td>Throughput</td><td class="winner">🏆 NestJS</td><td>2-4% maior</td></tr>
+        <tr><td>Confiabilidade</td><td>🤝 Empate</td><td>0% erros</td></tr>
+        <tr><td>Maturidade</td><td class="winner">🏆 Spring Boot</td><td>10+ anos</td></tr>
+        <tr><td>Velocidade Dev</td><td class="winner">🏆 NestJS</td><td>TypeScript</td></tr>
+    </table>
+</div>
+
+<!-- Slide 18: Obrigado -->
+<div class="slide title-slide">
+    <h1>Obrigado!</h1>
+    <p class="subtitle" style="margin-top: 60px;">Perguntas?</p>
+    <div style="margin-top: 80px;">
+        <p style="font-size: 1.3em;"><strong>Jerameel João Gonga</strong></p>
+        <p>📧 jerameelcode@gmail.com</p>
+        <p style="margin-top: 30px;">🔗 github.com/jerameelcode/usp-esalq-tcc-microsservices-java-vs-javascript</p>
+    </div>
+    <p style="margin-top: 60px; color: #888;">MBA em Engenharia de Software - USP/Esalq - 2026</p>
+</div>
+
+</body>
+</html>
